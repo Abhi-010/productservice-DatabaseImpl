@@ -110,10 +110,10 @@ public class ProductControllerWebMvcTest {
         productDto.setPrice(111);
         productDto.setImage("image");
 
-        when(productService.getProductById(any())).thenReturn(productDto);
+        when(productService.getProductById( any() ) ).thenReturn(productDto);
 
-        mockMvc.perform(get("/products/id"))
-                .andExpect(MockMvcResultMatchers.content().string("productDto"));
+        mockMvc.perform(get("/products/{id}",189))
+                .andExpect(MockMvcResultMatchers.content().string(objectMapper.writeValueAsString(productDto)));
 
     }
 }
